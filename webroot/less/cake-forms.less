@@ -387,9 +387,11 @@
 	.input.time,
 	.input.datetime {
 		vertical-align: middle;
+		font-size:0 !important;
 
 		select {
 			.margin(0 @cf-tiny-space @cf-tiny-space @cf-tiny-space);
+			.font-size(@cf-base-font-size) !important;
 		}
 
 		select:first-child {
