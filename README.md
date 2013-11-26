@@ -1,6 +1,6 @@
 # cake-forms.css
 
-![Cake Forms Example](http://i39.tinypic.com/2f07z3r.png)
+![Cake Forms Horizontal Example](http://i39.tinypic.com/2f07z3r.png)
 
 A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper.
 
