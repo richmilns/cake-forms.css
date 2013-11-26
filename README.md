@@ -15,6 +15,7 @@ Styles have been created for:
 The code less than 4kb (gzipped). The CSS version is already minified. Please note that inline and horizontal styles only work in IE9+ (they require CSS media query support).
 
 Handy features:
+===============
 - Automatically makes your CakePHP forms responsive out of the box!
 - Provides an elegant baseline style for rapid prototyping
 - Doesn't interfere with other existing form styles
