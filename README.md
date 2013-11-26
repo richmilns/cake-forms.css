@@ -43,4 +43,9 @@ If you are using the LESS version, you will also need to download the following 
 
 ## Version History
 
-**1.0.0** - first release
+**1.0.1**
+- Fixes for select label alignment on horizontal forms, inline forms submit alignment
+- Hiding characters between date, datetime and time by default
+
+**1.0.0**
+- first release

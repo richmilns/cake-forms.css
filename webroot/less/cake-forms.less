@@ -1,5 +1,5 @@
 /*!
- * cake-forms.css v1.0.0 | MIT license | http://git.io/YdtU9A
+ * cake-forms.css v1.0.1 | MIT license | http://git.io/YdtU9A
  * Uses: https://github.com/necolas/normalize.css/
  */
 
@@ -605,11 +605,28 @@
 				.display-inline-block();
 				width:25%;
 				margin-right:3%;
-				text-align:right;
+				text-align: right;
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				vertical-align: middle;
+			}
+
+			&.select,
+			&.date,
+			&.datetime,
+			&.time {
+				label {
+					vertical-align: top;
+					margin-top:7px;
+				}
+			}
+
+			&.select {
+				.checkbox {
+					margin-top:7px;
+					vertical-align: middle;
+				}
 			}
 		}
 
