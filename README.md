@@ -1,9 +1,9 @@
 cake-forms.css
 ==============
 
-![Cake Forms Example](http://i40.tinypic.com/2llzibt.jpg)
+![Cake Forms Example](http://i39.tinypic.com/2f07z3r.png)
 
-A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper. 
+A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper.
 
 The code has been written using LESS and can be totally customised to your requirements by altering the variables at the top of the cake-forms.less file and recompiling.
 
@@ -40,7 +40,7 @@ Future Ideas
 ============
 - I'm looking to implement a grid system to allow forms to be created in columns
 - More responsive CSS
-- Better support for IE7/8 - e.g. horizontal & inline forms 
+- Better support for IE7/8 - e.g. horizontal & inline forms
 
 Version History
 ===============
