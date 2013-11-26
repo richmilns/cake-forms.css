@@ -29,3 +29,13 @@ Installation
 If you are using the LESS version, you will also need to download the following into your less folder:
 - LessHat2 (https://github.com/csshat/lesshat/)
 - Remixins (https://github.com/christopher-ramirez/remixings)
+
+Future Ideas
+============
+- I'm looking to implement a grid system to allow forms to be created in columns
+- More responsive CSS
+- Better support for IE7/8 - e.g. horizontal & inline forms 
+
+Version History
+===============
+**1.0.0** - first release
