@@ -1,7 +1,7 @@
 cake-forms.css
 ==============
 
-A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper. Automatically makes your CakePHP forms responsive.
+A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper. 
 
 The code has been written using LESS and can be totally customised to your requirements by altering the variables at the top of the cake-forms.less file and recompiling.
 
@@ -10,4 +10,22 @@ Styles have been created for:
 - Inline forms (for example login forms)
 - 'Horizontal' forms with the label to the left of the form elements
 
+The code less than 4kb (gzipped). The CSS version is already minified. Please note that inline and horizontal styles only work in IE9+ (they require CSS media query support).
 
+Handy features:
+- Automatically makes your CakePHP forms responsive out of the box!
+- Provides an elegant baseline style for rapid prototyping
+- Doesn't interfere with other existing form styles
+- Support for IE7+ (looks OK on IE6 too)
+
+Feel free to make any suggestions or file a bug if you spot anything and I'll do my best to look into them in future releases.
+
+Installation
+============
+1. Clone into your project's `Plugin` folder
+2. Load the plugin from your bootstrap.php: `CakePlugin::load('CakeForms');`
+3. Add to your layout's <head>: `echo $this->Html->css('/cake_forms/css/cake-forms');`
+
+If you are using the LESS version, you will also need to download the following into your less folder:
+- LessHat2 (https://github.com/csshat/lesshat/)
+- Remixins (https://github.com/christopher-ramirez/remixings)
