@@ -43,6 +43,11 @@ If you are using the LESS version, you will also need to download the following 
 
 ## Version History
 
+**1.0.2**
+- Added new utility classes for clearing (`cake-form-clear`, `cake-form-clear-left`)
+- Added new utility class for centering a form `cake-form-centered`
+- Added more widths (25-100 now available in 5% increments) e.g. `cake-form-width-65`
+
 **1.0.1**
 - Fixes for select label alignment on horizontal forms, inline forms submit alignment
 - Hiding characters between date, datetime and time by default
