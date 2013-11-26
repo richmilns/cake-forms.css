@@ -25,6 +25,8 @@ Installation
 1. Clone into your project's `Plugin` folder
 2. Load the plugin from your bootstrap.php: `CakePlugin::load('CakeForms');`
 3. Add to your layout's head: `echo $this->Html->css('/cake_forms/css/cake-forms');`
+4. Add the class `cake-form` to any form and voila!
+5. Play around with adding additional classes such as `cake-form-inline` or `cake-form-horizontal` or `cake-form-width-50` (see the LESS file for more widths)
 
 If you are using the LESS version, you will also need to download the following into your less folder:
 - LessHat2 (https://github.com/csshat/lesshat/)
