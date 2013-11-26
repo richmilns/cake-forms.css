@@ -19,6 +19,7 @@ Handy features:
 - Automatically makes your CakePHP forms responsive out of the box!
 - Provides an elegant baseline style for rapid prototyping
 - Doesn't interfere with other existing form styles
+- Includes different colours for buttons / submit elements
 - Support for IE7+ (looks OK on IE6 too)
 
 Feel free to make any suggestions or file a bug if you spot anything and I'll do my best to look into them in future releases.
