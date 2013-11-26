@@ -1,0 +1,736 @@
+/*!
+ * cake-forms.css v1.0.0 | MIT license | http://git.io/YdtU9A
+ * Uses: https://github.com/necolas/normalize.css/
+ */
+
+// Codekit framework imports
+// ==================================================================================
+
+// @see https://github.com/christopher-ramirez/remixings/
+@import 'remixins';
+// @see https://github.com/csshat/lesshat
+@import 'lesshat2';
+
+
+// Variables
+// ==================================================================================
+@base-font-size-px:16; // set this to the size of your <body> default font size - without px unit for compatibility with remixins
+@cf-font:arial;
+@cf-base-font-size:14px;
+@cf-color3:#EAEAEA;
+@cf-label-color:#333333;
+@cf-element-color:#777;
+@cf-element-color-inverse:white;
+@cf-element-focus-color:#333333;
+@cf-element-hover-bg-color:white;
+@cf-element-border-color:#CACACA;
+@cf-element-focus-border-color:#66AFE9;
+@cf-required-color:#D10000;
+@cf-error-color:#D10000;
+@cf-border-radius:3px;
+@cf-tiny-space:2px;
+@cf-small-space:5px;
+@cf-medium-space:10px;
+@cf-large-space:15px;
+@cf-transition-length:0.2s;
+@cf-button-general-gradient1:#ededed;
+@cf-button-general-gradient2:#dfdfdf;
+@cf-button-general-hover-color:#333333;
+
+// Mixins
+// ==================================================================================
+/**
+ * Generic reset for form element styles
+ */
+.cf-reset() {
+	.font-size(@cf-base-font-size) !important;
+	.border-radius(0);
+	.reset-font-smoothing;
+	.box-sizing(border-box);
+	.transition(border @cf-transition-length ease-in-out, color @cf-transition-length ease-in-out, box-shadow @cf-transition-length ease-in-out);
+	font-family:@cf-font;
+	margin:0;
+	padding:0;
+	width:auto ;
+	height:auto;
+	color:@cf-element-color;
+	border:none;
+	box-shadow:none;
+	background:none;
+	text-shadow:none;
+	outline:none;
+
+	&:focus {
+		color:@cf-element-focus-color;
+		// glow effect
+		border-color:@cf-element-focus-border-color;
+		.box-shadow(0 0 5px @cf-element-focus-border-color);
+	}
+}
+
+/**
+ * Display: inline-block support for OldIE
+ */
+.display-inline-block() {
+	display:inline-block;
+	// ie7 support
+	zoom:1;
+	*display:inline;
+	// ie6 support
+	_display:inline;
+}
+
+/**
+ * Fix for fonts looking heavier than they should (almost faux bold) in webkit
+ */
+.reset-font-smoothing() {
+	-webkit-font-smoothing: antialiased;
+}
+
+/**
+ * Creates a button using CSS3
+ */
+.btn(@gradient1:#ededed, @gradient2:#dfdfdf, @border:#dcdcdc, @textCol:#777777, @boxShadow:#ffffff, @textShadow:#ffffff) {
+	.display-inline-block;
+	.background-image(linear-gradient( top, @gradient1 5%, @gradient2 100% )) !important;
+	.box-shadow(inset 0px 1px 0px 0px @boxShadow) !important;
+	.border-radius(@cf-border-radius) !important;
+	.padding(7px 18px) !important;
+	.margin(0 @cf-large-space @cf-medium-space 0) !important;
+	background-color:@gradient1 !important;
+	text-shadow:1px 1px 0px @textShadow !important;
+	font-weight:normal !important;
+	border:1px solid @border !important;
+	text-decoration:none !important;
+	color:@textCol !important;
+	width:auto;
+
+	&:hover {
+		.background-image(linear-gradient( top, @gradient2 5%, @gradient1 100% )) !important;
+		background-color:@gradient2 !important;
+	}
+
+	&:active {
+		position:relative;
+		top:1px;
+	}
+}
+
+// Cake Form Baseline Styles
+// ==================================================================================
+/**
+ * Our Form tag should have the class 'cake-form' applied to it as a base
+ */
+.cake-form {
+	font-family:@cf-font;
+	position:relative;
+
+	// Reset courtesey of Normalize.css v2.1.3
+	// @see https://raw.github.com/necolas/normalize.css/master/normalize.css
+	// ==============================================================================
+
+	/**
+	 * Define consistent border, margin, and padding.
+	 */
+
+	fieldset {
+		border: 1px solid #c0c0c0;
+		margin: 0 2px;
+		padding: 0.35em 0.625em 0.75em;
+	}
+
+	/**
+	 * 1. Correct `color` not being inherited in IE 8/9.
+	 * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+	 */
+
+	legend {
+		border: 0; /* 1 */
+		padding: 0; /* 2 */
+	}
+
+	/**
+	 * 1. Correct font family not being inherited in all browsers.
+	 * 2. Correct font size not being inherited in all browsers.
+	 * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+	 */
+
+	button,
+	input,
+	select,
+	textarea {
+		font-family: inherit; /* 1 */
+		font-size: 100%; /* 2 */
+		margin: 0; /* 3 */
+	}
+
+	/**
+	 * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+	 * the UA stylesheet.
+	 */
+
+	button,
+	input {
+		line-height: normal;
+	}
+
+	/**
+	 * Address inconsistent `text-transform` inheritance for `button` and `select`.
+	 * All other form control elements do not inherit `text-transform` values.
+	 * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+	 * Correct `select` style inheritance in Firefox 4+ and Opera.
+	 */
+
+	button,
+	select {
+		text-transform: none;
+	}
+
+	/**
+	 * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+	 *    and `video` controls.
+	 * 2. Correct inability to style clickable `input` types in iOS.
+	 * 3. Improve usability and consistency of cursor style between image-type
+	 *    `input` and others.
+	 */
+
+	button,
+	html input[type="button"], /* 1 */
+	input[type="reset"],
+	input[type="submit"] {
+		-webkit-appearance: button; /* 2 */
+		cursor: pointer; /* 3 */
+	}
+
+	/**
+	 * Re-set default cursor for disabled elements.
+	 */
+
+	button[disabled],
+	html input[disabled] {
+		cursor: default;
+	}
+
+	/**
+	 * 1. Address box sizing set to `content-box` in IE 8/9/10.
+	 * 2. Remove excess padding in IE 8/9/10.
+	 */
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		box-sizing: border-box; /* 1 */
+		padding: 0; /* 2 */
+	}
+
+	/**
+	 * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+	 * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+	 *    (include `-moz` to future-proof).
+	 */
+
+	input[type="search"] {
+		-webkit-appearance: textfield; /* 1 */
+		-moz-box-sizing: content-box;
+		-webkit-box-sizing: content-box; /* 2 */
+		box-sizing: content-box;
+	}
+
+	/**
+	 * Remove inner padding and search cancel button in Safari 5 and Chrome
+	 * on OS X.
+	 */
+
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-decoration {
+		-webkit-appearance: none;
+	}
+
+	/**
+	 * Remove inner padding and border in Firefox 4+.
+	 */
+
+	button::-moz-focus-inner,
+	input::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+
+	/**
+	 * 1. Remove default vertical scrollbar in IE 8/9.
+	 * 2. Improve readability and alignment in all browsers.
+	 */
+
+	textarea {
+		overflow: auto; /* 1 */
+		vertical-align: top; /* 2 */
+	}
+
+	// Cake Form Styles
+	// ==============================================================================
+
+	.input {
+		position:relative;
+	}
+
+	// Generic reset to remove / reset any possible styles inherited from elsewhere
+	// also adds border
+	input,
+	input[type="password"],
+	input[type="tel"],
+	.tel input[type="tel"],
+	input[type="email"],
+	input[type="text"],
+	.text input[type="text"],
+	input[type="submit"],
+	.submit input[type="submit"],
+	fieldset,
+	.radio fieldset,
+	legend,
+	textarea,
+	button,
+	select {
+		.cf-reset;
+		border:1px solid @cf-element-border-color;
+	}
+
+	// reset labels and divs as above but without border
+	label,
+	div {
+		.cf-reset;
+	}
+
+	// remove border on certain elements that inherited it from reset
+	legend {
+		border:none;
+	}
+
+	// div default spacing
+	div {
+		.margin-bottom(@cf-medium-space);
+	}
+
+	// label default styling
+	label {
+		.margin-bottom(@cf-small-space);
+		color:@cf-label-color;
+		// by default, clear the input the label is next to
+		display:block;
+		// reset line height from cake.generic
+		line-height:normal !important;
+	}
+
+	// general styles for text / html5 inputs, textarea and select
+	.input.text input,
+	.input.tel input,
+	.input.email input,
+	.input.password input,
+	.textarea textarea {
+		.border-radius(@cf-border-radius);
+		.background-image(linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(247,247,247,1) 100%));
+		width:100%;
+		font-weight:normal;
+
+		&:hover,
+		&:focus {
+			background-color:@cf-element-hover-bg-color;
+		}
+	}
+
+	// padding on text elements
+	.input.text input,
+	.input.tel input,
+	.input.email input,
+	.input.password input,
+	.input.file input,
+	.textarea textarea,
+	.input.select select[multiple],
+	.input.select select,
+	.input.date select,
+	.input.time select,
+	.input.datetime select {
+		.padding(7px 7px 7px 7px);
+	}
+
+	// select and multiple select elements
+	.input.select select[multiple],
+	.input.select select,
+	.input.date select,
+	.input.time select,
+	.input.datetime select {
+		.border-radius(@cf-border-radius);
+		.background-image(linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(247,247,247,1) 100%));
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		// remove dropdown arrow in FF?
+		/*text-indent: 0.01px;
+		text-overflow: '';*/
+
+		& option {
+			// force FF font size for select options
+			.font-size(@cf-base-font-size);
+		}
+
+		&:hover,
+		&:focus {
+			background-color:@cf-element-hover-bg-color;
+		}
+	}
+
+	// normal select / multiple select should be 100% wide by default
+	.input.select select[multiple],
+	.input.select select {
+		width:100%;
+	}
+
+	// date / time pickers, hide the characters between the boxes and space evenly instead
+	.input.date,
+	.input.time,
+	.input.datetime {
+		vertical-align: middle;
+
+		select {
+			.margin(0 @cf-tiny-space @cf-tiny-space @cf-tiny-space);
+		}
+
+		select:first-child {
+			margin-left:0;
+		}
+
+		select:last-child {
+			margin-right:0;
+		}
+
+	}
+
+	// IE 10 supports proper styling of the file input element
+	.input.file input {
+		&::-ms-value {
+			border:none;
+		}
+
+		&::-ms-browse {
+			.btn();
+			.padding(0 @cf-small-space 0 @cf-small-space) !important;
+			margin:0 !important;
+		}
+	}
+
+	// checkbox elements and multiple checkboxes via FormHelper::select
+	.input.checkbox,
+	.input.select .checkbox {
+		input,
+		label {
+			// .display-inline-block();
+			display:inline;
+		}
+
+		input {
+			.margin-right(@cf-small-space);
+			border:none;
+			// fix for IE6
+			width:auto;
+		}
+
+		label {
+			.margin-right(@cf-medium-space);
+		}
+	}
+
+	// radio elements to be stacked on top of each other
+	.input.radio {
+		input {
+			.margin-right(@cf-small-space);
+			float:left;
+			clear:left;
+			border:none;
+			// fix for IE6
+			width:auto;
+
+			&:focus {
+				// chrome puts a square around the round radio button, remove the box shadow
+				box-shadow:none;
+			}
+		}
+	}
+
+	// multiple checkboxes should line up
+	.input.select .checkbox {
+		.display-inline-block();
+	}
+
+	// lining up the checkbox with the bottom of the label text
+	.checkbox  {
+		input {
+			.margin-top(2px);
+		}
+	}
+
+	fieldset {
+		.padding(@cf-medium-space) !important;
+		.border-radius(@cf-border-radius) !important;
+	}
+
+	legend {
+		font-weight:600;
+		color:@cf-label-color;
+	}
+
+	// Button Styles
+	// ==============================================================================
+	.submit input,
+	button,
+	.btn {
+		.btn(@cf-button-general-gradient1, @cf-button-general-gradient2, @cf-element-border-color, @cf-element-color);
+
+		&:hover {
+			color:@cf-button-general-hover-color !important;
+		}
+	}
+
+	.btn-green {
+		.btn(#77d42a, #5cb811, #268a16, #306108, #c9efab, #aade7c);
+	}
+
+	.btn-red {
+		.btn(#fe1900, #ce0000, #d83526, #ffffff, #f29d93, #b23d35);
+	}
+
+	.btn-blue {
+		.btn(#3d93f6, #1e62d0, #3381ed, #ffffff, #97c4fe, #1571cd);
+	}
+
+	// Error / states
+	// ==============================================================================
+
+	input[readonly] {
+		cursor:not-allowed;
+	}
+
+	input[disabled] {
+		cursor:'pointer';
+		background:@cf-color3 !important;
+	}
+
+	.required {
+		label {
+			font-weight:bold;
+		}
+
+		label:after {
+			content:' *';
+			color:@cf-required-color;
+		}
+	}
+
+	.error {
+		label {
+			font-weight:bold;
+			color:@cf-error-color;
+		}
+
+		label:after {
+			content:'*';
+			color:@cf-error-color;
+		}
+	}
+}
+
+// Form fields inline
+// ===============================================================================
+@media only screen and (min-width:unit((600 / @base-font-size-px), em)) {
+	.cake-form-inline {
+		.input,
+		.submit {
+			// display:inline;
+			.display-inline-block();
+			.margin-right(@cf-small-space);
+			vertical-align: middle;
+
+			input,
+			select,
+			textarea {
+				display:inline;
+				width:auto !important;
+			}
+
+			label {
+				display:none;
+			}
+
+			.input.checkbox {
+				label {
+					display:inline;
+				}
+			}
+		}
+
+		.submit {
+			input {
+				.margin(@cf-medium-space 0 @cf-medium-space 0) !important;
+			}
+		}
+	}
+}
+// Form fields with label to the left
+// ==================================================================================
+@media only screen and (min-width:unit((650 / @base-font-size-px), em)) {
+
+	.cake-form-horizontal {
+		.input {
+			margin-top:0 !important;
+
+			&.text input,
+			&.tel input,
+			&.email input,
+			&.password input,
+			&.select select,
+			textarea {
+				.display-inline-block();
+				width:72% !important;
+			}
+
+			&.text label,
+			&.tel label,
+			&.email label,
+			&.password label,
+			&.select label,
+			&.textarea label,
+			&.file label,
+			&.date label,
+			&.time label,
+			&.datetime label {
+				.display-inline-block();
+				width:25%;
+				margin-right:3%;
+				text-align:right;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				vertical-align: middle;
+			}
+		}
+
+		.checkbox,
+		.submit {
+			margin-left:28%;
+
+			input {
+				width:auto !important;
+			}
+		}
+
+		.select {
+			.checkbox {
+				margin-left:0;
+			}
+
+			select[multiple="multiple"] {
+				// Todo: investigate this!
+				// for some reason, select multiple is too wide and goes to next line...
+				width:70% !important;
+			}
+		}
+
+		// wrap any non-submit buttons in this class to make them line up
+		.btn-wrapper {
+			margin-left:28%;
+		}
+
+		.radio {
+			fieldset {
+				margin-left:28%;
+			}
+
+			input {
+				width:auto !important;
+			}
+		}
+	}
+}
+
+
+// Cake Form Widths
+// ==================================================================================
+.cake-form-width-25 {
+	width:25%;
+}
+
+.cake-form-width-33 {
+	width:33.333333%;
+}
+
+.cake-form-width-50 {
+	width:50%;
+}
+
+.cake-form-width-66 {
+	width:66.666666%;
+}
+
+.cake-form-width-75 {
+	width:75%;
+}
+
+.cake-form-width-99 {
+	width:99.999999%;
+}
+
+.cake-form-width-100 {
+	width:100%;
+}
+
+// Todo: Cake Form Responsive Styles
+// ==================================================================================
+
+// Todo: Cake Form Grid Styles
+// ==================================================================================
+
+// Webkit only styles
+// ==================================================================================
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	.cake-form {
+		// removing the border around the file input which we added for IE's benefit
+		.input.file input {
+			border:none;
+		}
+	}
+
+}
+
+// FF only styles
+// ==================================================================================
+@-moz-document url-prefix() {
+	.cake-form {
+		// removing the border around the file input which we added for IE's benefit
+		.input.file input {
+			border:none;
+		}
+	}
+}
+
+// Cake Form IE Fixes
+// ==================================================================================
+
+/*.ie6,
+.ie7,
+.ie8,
+.ie9 {
+	.cake-form {
+		.input.select select {
+			padding:0;
+		}
+	}
+}
+*/
+
+.ie6,
+.ie7 {
+	.cake-form {
+		// fixing alignment in IE6/7 for checkboxes vs checkbox labels
+		.checkbox  {
+			input {
+				.margin-top(-2px);
+			}
+		}
+	}
+}
