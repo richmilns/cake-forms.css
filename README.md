@@ -1,6 +1,8 @@
 cake-forms.css
 ==============
 
+![Cake Forms Example](http://i40.tinypic.com/2llzibt.jpg)
+
 A plugin for CakePHP 2.x which provides base CSS styles for forms created using the FormHelper. 
 
 The code has been written using LESS and can be totally customised to your requirements by altering the variables at the top of the cake-forms.less file and recompiling.
